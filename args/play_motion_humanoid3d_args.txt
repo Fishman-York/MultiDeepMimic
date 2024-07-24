@@ -1,5 +1,5 @@
 --scene kin_char
 
---character_file data/characters/humanoid3d.txt
+--character_files data/characters/humanoid3d.txt data/characters/humanoid3d.txt
 --kin_ctrl motion
---motion_file data/motions/humanoid3d_spinkick.txt
+--motion_files data/motions/humanoid3d_jump.txt data/motions/humanoid3d_roll.txt

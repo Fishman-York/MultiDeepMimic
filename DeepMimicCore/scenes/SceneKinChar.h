@@ -23,6 +23,7 @@ public:
 
 	virtual int GetNumCharacter();
 	virtual const std::shared_ptr<cKinCharacter>& GetCharacter(int id) const;
+	virtual const std::shared_ptr<cKinCharacter>& GetCharacter() const;
 	virtual tVector GetCharPos() const;
 	virtual double GetTime() const;
 
