@@ -49,6 +49,11 @@ const std::shared_ptr<cKinCharacter>& cSceneKinChar::GetCharacter(int id) const
 	return mChars[id];
 }
 
+const std::shared_ptr<cKinCharacter>& cSceneKinChar::GetCharacter() const
+{ 
+	return mChars[0];
+}
+
 tVector cSceneKinChar::GetCharPos() const
 {
 	return GetCharacter(0)->GetRootPos();
@@ -159,14 +164,14 @@ void cSceneKinChar::UpdateCharacters(double timestep)
 bool cSceneKinChar::BuildControllers()
 {
 	int num_char = static_cast<int>(mChars.size());
-	bool succ = false;
 	for (int i = 0; i < num_char; ++i)
 	{
 		auto& kin_char = mChars[i];
+
 		mCtrlParams[i].mChar = kin_char;
 
 		std::shared_ptr<cKinController> ctrl;
-		succ = cKinCtrlBuilder::BuildController(mCtrlParams[i], ctrl);
+		bool succ = cKinCtrlBuilder::BuildController(mCtrlParams[i], ctrl);
 		if (succ && ctrl != nullptr)
 		{
 			kin_char->SetController(ctrl);

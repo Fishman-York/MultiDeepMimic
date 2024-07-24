@@ -14,12 +14,11 @@ MKDIR = mkdir -p
 
 PYTHON_INC = /usr/include/python3.7
 PYTHON_LIB = /usr/lib/python3.7
-EIGEN_DIR = ../../eigen-3.3.7
-# BULLET_INC_DIR = ../../bullet3-2.88/src
-BULLET_INC_DIR = /usr/local/include/bullet
-BULLET_LIB_DIR = /usr/local/lib
-GLEW_LIB_DIR = /usr/lib64
-FREEGLUT_LIB_DIR = ../../freeglut-3.0.0
+EIGEN_DIR = /usr/local/include/eigen3
+BULLET_INC_DIR = /home/julian/Documents/Dissertation/bullet3-3.25/src
+BULLET_LIB_DIR = /usr/lib/x86_64-linux-gnu
+GLEW_LIB_DIR = /usr/lib/x86_64-linux-gnu
+FREEGLUT_LIB_DIR = /usr/lib/x86_64-linux-gnu
 
 INC = -I./ \
 	-I$(EIGEN_DIR) \
