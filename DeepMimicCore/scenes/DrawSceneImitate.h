@@ -33,5 +33,5 @@ protected:
 	virtual void DrawKinCharacters() const;
 	virtual void DrawKinCharacter(const std::shared_ptr<cKinCharacter>& kin_char) const;
 	
-	virtual const std::shared_ptr<cKinCharacter>& GetKinChar() const;
+	virtual const std::shared_ptr<cKinCharacter>& GetKinChar(int id) const;
 };
