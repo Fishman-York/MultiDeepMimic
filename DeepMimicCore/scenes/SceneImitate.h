@@ -40,7 +40,7 @@ protected:
 	virtual bool BuildCharacters();
 
 	virtual void CalcJointWeights(const std::shared_ptr<cSimCharacter>& character, Eigen::VectorXd& out_weights) const;
-	virtual bool BuildController(int id, const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl);
+	virtual bool BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl);
 	virtual bool BuildKinCharacters();
 	virtual bool BuildKinCharacter(const cKinCharacter::tParams& params, std::shared_ptr<cKinCharacter>& out_char) const;
 	virtual bool BuildKinControllers();

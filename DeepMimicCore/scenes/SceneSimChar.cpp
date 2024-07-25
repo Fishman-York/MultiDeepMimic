@@ -519,7 +519,7 @@ void cSceneSimChar::CalcCharRandPlacement(const std::shared_ptr<cSimCharacter>& 
 	tVector rand_pos;
 	tQuaternion rand_rot;
 	mGround->SamplePlacement(tVector::Zero(), rand_pos, rand_rot);
-
+	rand_pos[0] = rand() % 10;
 	out_pos = rand_pos;
 	out_pos[1] += char_pos[1];
 	out_rot = rand_rot * char_rot;

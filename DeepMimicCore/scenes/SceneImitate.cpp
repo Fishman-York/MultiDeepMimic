@@ -242,7 +242,7 @@ void cSceneImitate::ParseKinCtrlParams(const std::shared_ptr<cArgParser>& parser
 bool cSceneImitate::BuildCharacters()
 {
 	bool succ = cRLSceneSimChar::BuildCharacters();
-	int num_char = static_cast<int>(mKinChars.size());
+	int num_char = GetNumChars();
 	for (int i=0; i < num_char; ++i)
 	{
 		if (EnableSyncChar(i))
@@ -267,7 +267,7 @@ void cSceneImitate::CalcJointWeights(const std::shared_ptr<cSimCharacter>& chara
 	out_weights /= sum;
 }
 
-bool cSceneImitate::BuildController(int id, const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl)
+bool cSceneImitate::BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl)
 {
 	bool succ = cSceneSimChar::BuildController(ctrl_params, out_ctrl);
 	if (succ)
@@ -275,7 +275,7 @@ bool cSceneImitate::BuildController(int id, const cCtrlBuilder::tCtrlParams& ctr
 		auto ct_ctrl = dynamic_cast<cCtController*>(out_ctrl.get());
 		if (ct_ctrl != nullptr)
 		{
-			const auto& kin_char = GetKinChar(id);
+			const auto& kin_char = GetKinChar(ctrl_params.mChar -> GetID());
 			double cycle_dur = kin_char->GetMotionDuration();
 			ct_ctrl->SetCyclePeriod(cycle_dur);
 		}
@@ -303,6 +303,7 @@ bool cSceneImitate::BuildKinCharacters()
 		mKinChars.push_back(kin_char);
 		
 	}
+	printf("Built characters");
 	return succ;
 }
 
@@ -315,7 +316,7 @@ bool cSceneImitate::BuildKinCharacter(const cKinCharacter::tParams& params, std:
 
 bool cSceneImitate::BuildKinControllers()
 {
-	int num_char = static_cast<int>(mChars.size());
+	int num_char = static_cast<int>(mKinChars.size());
 	for (int i = 0; i < num_char; ++i)
 	{
 		auto& curr_char = GetKinChar(i);
