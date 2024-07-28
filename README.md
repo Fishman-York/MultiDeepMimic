@@ -14,54 +14,83 @@ The framework uses reinforcement learning to train a simulated humanoid to imita
 of motion skills from mocap data.
 
 ## Installation
+
   `sudo apt install libgl1-mesa-dev libx11-dev libxrandr-dev libxi-dev`
+
   `sudo apt install mesa-utils`
+
   `sudo apt install clang`
+
   `sudo apt install cmake`
 
 - bullet3-3.25 (https://github.com/bulletphysics/bullet3/releases)
+  
   Use build flag USE_DOUBLE_PRECISION=OFF
 
   `./build_cmake_pybullet_double.sh`
+
   `cd build_cmake`
+
   `sudo make install`
 
 - Eigen-3.4.0 (https://www.eigen.tuxfamily.org/index.php?title=Main_Page)
+  
   `mkdir build && cd build`
+
   `cmake ..`
+
   `sudo make install`
 
 - Open GL >= 3.2
 
 - freeglut-3.6.0 (https://freeglut.sourceforge.net/)
+  
   `cmake .`
+
   `make`
+
   `sudo make install`
 
 - glew-2.1.0 (https://glew.sourceforge.net/)
+  
   `make`
+
   `sudo make install`
+
   `make clean`
 
 - swig-4.2.1 (https://www.swig.org/)
+  
   `./configure --without-pcre`
+  
   `make`
+  
   `sudo make install`
 
 - mpi
+  
   Install before mpi4y
+  
   `sudo apt install libopenmpi-dev`
 
 - python-3.7
+  
   `sudo apt install software-properties-common`
+  
   `sudo add-apt-repository ppa:deadsnakes/ppa`
+  
   `sudo apt update`
+  
   `sudo apt install python3.7`
+  
   `sudo apt-get install python3.7-dev`
   
 - python virtual env
+  
   `python3.7 -m venv "DeepMimicEnv"`
+  
   `source DeepMimicEnv/bin/activate`
+  
   `pip install -r env/requirements.txt`
 
 ## Build
@@ -69,12 +98,19 @@ The simulated environments are written in C++, and the python wrapper is built u
 
 ### Linux
 1. Modify the `Makefile` in `DeepMimicCore/` by changing the following,
+	
 	`PYTHON_INC`
+	
 	`PYTHON_LIB`
+	
 	`EIGEN_DIR`
+	
 	`BULLET_INC_DIR`
+	
 	`BULLET_LIB_DIR`
+	
 	`GLEW_LIB_DIR`
+	
 	`FREEGLUT_LIB_DIR`
 
 2. Go into DeepMimicCore directory
@@ -84,6 +120,7 @@ The simulated environments are written in C++, and the python wrapper is built u
 3. Build wrapper,
 	
 	`make clean`
+	
 	`make python`
 	
 This should generate `DeepMimicCore.py` in `DeepMimicCore/`
