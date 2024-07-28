@@ -14,7 +14,7 @@
 --char_ctrls ct_pd
 --char_ctrl_files data/controllers/humanoid3d_phase_rot_ctrl.txt
 --kin_ctrl motion
---motion_file data/motions/humanoid3d_spinkick.txt
+--motion_files data/motions/humanoid3d_spinkick.txt
 --sync_char_root_pos true
 --sync_char_root_rot false
 

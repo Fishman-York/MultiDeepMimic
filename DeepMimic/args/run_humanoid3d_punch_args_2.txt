@@ -19,6 +19,6 @@
 --sync_char_root_rot false
 
 --agent_files data/agents/ct_agent_humanoid_ppo.txt
---train_agents false
+--train_agents true
 
---model_files data/policies/humanoid3d/humanoid3d_punch.ckpt
+--model_files output/agent0_model.ckpt

@@ -78,11 +78,6 @@ void cSceneSimChar::ParseArgs(const std::shared_ptr<cArgParser>& parser)
 	succ &= ParseCharTypes(parser, mCharTypes);
 	succ &= ParseCharParams(parser, mCharParams);
 	succ &= ParseCharCtrlParams(parser, mCtrlParams);
-	if (mCharParams.size() != mCtrlParams.size())
-	{
-		printf("Char and ctrl file mismatch, %zi vs %zi\n", mCharParams.size(), mCtrlParams.size());
-		assert(false);
-	}
 
 	std::string sim_mode_str = "";
 	parser->ParseInt("num_sim_substeps", mWorldParams.mNumSubsteps);
@@ -384,6 +379,9 @@ bool cSceneSimChar::ParseCharParams(const std::shared_ptr<cArgParser>& parser, s
 
 	std::vector<double> init_pos_xs;
 	parser->ParseDoubles("char_init_pos_xs", init_pos_xs);
+
+	std::vector<double> init_pos_zs;
+	parser->ParseDoubles("char_init_pos_zs", init_pos_zs);
 	
 	int num_files = static_cast<int>(char_files.size());
 	out_params.resize(num_files);
@@ -403,6 +401,11 @@ bool cSceneSimChar::ParseCharParams(const std::shared_ptr<cArgParser>& parser, s
 		if (init_pos_xs.size() > i)
 		{
 			params.mInitPos[0] = init_pos_xs[i];
+		}
+
+		if (init_pos_zs.size() > i)
+		{
+			params.mInitPos[2] = init_pos_zs[i];
 		}
 	}
 
@@ -486,12 +489,10 @@ void cSceneSimChar::InitCharacterPos()
 
 void cSceneSimChar::InitCharacterPos(const std::shared_ptr<cSimCharacter>& out_char)
 {
-	if (mEnableRandCharPlacement)
-	{
+	if (mEnableRandCharPlacement){
 		SetCharRandPlacement(out_char);
 	}
-	else
-	{
+	else{
 		InitCharacterPosFixed(out_char);
 	}
 }
@@ -504,6 +505,8 @@ void cSceneSimChar::InitCharacterPosFixed(const std::shared_ptr<cSimCharacter>& 
 
 	double h = mGround->SampleHeight(root_pos);
 	root_pos[1] += h;
+
+	root_pos[2] = mCharParams[char_id].mInitPos[2];
 
 	out_char->SetRootPos(root_pos);
 }
@@ -524,7 +527,7 @@ void cSceneSimChar::CalcCharRandPlacement(const std::shared_ptr<cSimCharacter>& 
 	tVector rand_pos;
 	tQuaternion rand_rot;
 	mGround->SamplePlacement(tVector::Zero(), rand_pos, rand_rot);
-
+	rand_pos[0] = rand() % 10;
 	out_pos = rand_pos;
 	out_pos[1] += char_pos[1];
 	out_rot = rand_rot * char_rot;

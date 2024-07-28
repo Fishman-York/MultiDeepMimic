@@ -103,4 +103,5 @@ protected:
 	virtual bool LoadTextures();
 	virtual void SetupMeshShader();
 	virtual void DoShadowPass();
+	virtual void DrawCompass() const;
 };

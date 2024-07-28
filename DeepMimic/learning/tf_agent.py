@@ -6,6 +6,8 @@ from learning.rl_agent import RLAgent
 from util.logger import Logger
 from learning.tf_normalizer import TFNormalizer
 
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
 class TFAgent(RLAgent):
     RESOURCE_SCOPE = 'resource'
     SOLVER_SCOPE = 'solvers'

@@ -373,6 +373,8 @@ void cDrawScene::DrawScene()
 		cDrawUtil::PopMatrixProj();
 		cDrawUtil::PopMatrixView();
 	}
+
+	DrawCompass();
 }
 
 void cDrawScene::DrawGrid() const
@@ -592,4 +594,24 @@ void cDrawScene::DoShadowPass()
 
 	cDrawUtil::PopMatrixProj();
 	cDrawUtil::PopMatrixView();
+}
+
+void cDrawScene::DrawCompass() const
+{
+    // Define colors for the axes
+    const tVector xAxisColor = tVector(1.0, 0.0, 0.0, 1.0); // Red for X axis
+    const tVector yAxisColor = tVector(0.0, 1.0, 0.0, 1.0); // Green for Y axis
+    const tVector zAxisColor = tVector(0.0, 0.0, 1.0, 1.0); // Blue for Z axis
+
+    // Draw X-axis
+    cDrawUtil::SetColor(xAxisColor);
+    cDrawUtil::DrawLine(tVector(0, 0, 0, 1), tVector(1, 0, 0, 1)); // Line from origin to (1,0,0)
+
+    // Draw Y-axis
+    cDrawUtil::SetColor(yAxisColor);
+    cDrawUtil::DrawLine(tVector(0, 0, 0, 1), tVector(0, 1, 0, 1)); // Line from origin to (0,1,0)
+
+    // Draw Z-axis
+    cDrawUtil::SetColor(zAxisColor);
+    cDrawUtil::DrawLine(tVector(0, 0, 0, 1), tVector(0, 0, 1, 1)); // Line from origin to (0,0,1)
 }

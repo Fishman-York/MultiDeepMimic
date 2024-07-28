@@ -21,7 +21,7 @@ void cDrawSceneKinChar::Init()
 {
 	BuildScene(mScene);
 	SetupScene(mScene);
-
+	
 	cDrawScene::Init();
 }
 
@@ -119,6 +119,11 @@ void cDrawSceneKinChar::DrawGround3D() const
 
 void cDrawSceneKinChar::DrawCharacters() const
 {
-	const auto& character = mScene->GetCharacter();
-	cDrawCharacter::Draw(*character, gLinkWidth, gFilLColor, gLineColor);
+	int num_char = mScene->GetNumCharacter();
+	for (int i = 0; i < num_char; ++i)
+	{
+		const auto& character = mScene->GetCharacter(i);
+		cDrawCharacter::Draw(*character, gLinkWidth, gFilLColor, gLineColor);
+	}
+	
 }

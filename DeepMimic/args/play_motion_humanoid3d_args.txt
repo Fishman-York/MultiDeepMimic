@@ -1,0 +1,5 @@
+--scene kin_char
+
+--character_files data/characters/humanoid3d.txt data/characters/humanoid3d.txt
+--kin_ctrl motion
+--motion_files data/motions/hug_3_convert.txt data/motions/humanoid3d_punch.txt

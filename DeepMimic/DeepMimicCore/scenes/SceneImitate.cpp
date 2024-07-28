@@ -152,9 +152,13 @@ void cSceneImitate::ParseArgs(const std::shared_ptr<cArgParser>& parser)
 
 void cSceneImitate::Init()
 {
-	mKinChar.reset();
-	BuildKinCharacter();
-	BuildKinController();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
+	{
+		mKinChars[i].reset();
+	}
+	BuildKinCharacters();
+	BuildKinControllers();
 
 	cRLSceneSimChar::Init();
 	InitJointWeights();
@@ -169,14 +173,19 @@ double cSceneImitate::CalcReward(int agent_id) const
 	int max_id = 0;
 	if (!fallen)
 	{
-		r = CalcRewardImitate(*sim_char, *mKinChar);
+		r = CalcRewardImitate(*sim_char, *mKinChars[agent_id]);
 	}
 	return r;
 }
 
+const std::shared_ptr<cKinCharacter>& cSceneImitate::GetKinChar(int id) const
+{
+	return mKinChars[id];
+}
+
 const std::shared_ptr<cKinCharacter>& cSceneImitate::GetKinChar() const
 {
-	return mKinChar;
+	return mKinChars[0];
 }
 
 void cSceneImitate::EnableRandRotReset(bool enable)
@@ -196,7 +205,7 @@ cSceneImitate::eTerminate cSceneImitate::CheckTerminate(int agent_id) const
 	if (terminated == eTerminateNull)
 	{
 		bool end_motion = false;
-		const auto& kin_char = GetKinChar();
+		const auto& kin_char = GetKinChar(agent_id);
 		const cMotion* motion = kin_char->GetMotion();
 		end_motion = kin_char->IsMotionOver();
 		terminated = (end_motion) ? eTerminateFail : terminated;
@@ -209,26 +218,37 @@ std::string cSceneImitate::GetName() const
 	return "Imitate";
 }
 
-void cSceneImitate::ParseKinCtrlParams(const std::shared_ptr<cArgParser>& parser, cKinCtrlBuilder::tCtrlParams& out_params) const
+void cSceneImitate::ParseKinCtrlParams(const std::shared_ptr<cArgParser>& parser, std::vector<cKinCtrlBuilder::tCtrlParams>& out_params) const
 {
-	std::string motion_file;
-	parser->ParseString("motion_file", motion_file);
+	std::vector<std::string> motion_files;
+	parser->ParseStrings("motion_files", motion_files);
 
 	std::string kin_ctrl_str;
 	parser->ParseString("kin_ctrl", kin_ctrl_str);
 
-	auto& ctrl_params = out_params;
-	const std::string& type_str = kin_ctrl_str;
-	cKinCtrlBuilder::ParseCharCtrl(type_str, ctrl_params.mCharCtrl);
-	ctrl_params.mCtrlFile = motion_file;
+	int num_files = static_cast<int>(motion_files.size());
+	out_params.resize(num_files);
+
+	for (int i = 0; i < num_files; ++i)
+	{
+		auto& ctrl_params = out_params[i];
+		const std::string& type_str = kin_ctrl_str;
+		cKinCtrlBuilder::ParseCharCtrl(type_str, ctrl_params.mCharCtrl);
+		ctrl_params.mCtrlFile = motion_files[i];
+
+	}
 }
 
 bool cSceneImitate::BuildCharacters()
 {
 	bool succ = cRLSceneSimChar::BuildCharacters();
-	if (EnableSyncChar())
+	int num_char = GetNumChars();
+	for (int i=0; i < num_char; ++i)
 	{
-		SyncCharacters();
+		if (EnableSyncChar(i))
+		{
+			SyncCharacter(i);
+		}
 	}
 	return succ;
 }
@@ -255,7 +275,7 @@ bool cSceneImitate::BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params
 		auto ct_ctrl = dynamic_cast<cCtController*>(out_ctrl.get());
 		if (ct_ctrl != nullptr)
 		{
-			const auto& kin_char = GetKinChar();
+			const auto& kin_char = GetKinChar(ctrl_params.mChar -> GetID());
 			double cycle_dur = kin_char->GetMotionDuration();
 			ct_ctrl->SetCyclePeriod(cycle_dur);
 		}
@@ -263,56 +283,84 @@ bool cSceneImitate::BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params
 	return succ;
 }
 
-bool cSceneImitate::BuildKinCharacter()
+bool cSceneImitate::BuildKinCharacters()
 {
-	auto kin_char = std::shared_ptr<cKinCharacter>(new cKinCharacter());
-	const cSimCharacter::tParams& sim_char_params = mCharParams[0];
-	cKinCharacter::tParams kin_char_params;
-
-	kin_char_params.mID = 0;
-	kin_char_params.mCharFile = sim_char_params.mCharFile;
-	kin_char_params.mOrigin = sim_char_params.mInitPos;
-	kin_char_params.mLoadDrawShapes = false;
-
-	bool succ = kin_char->Init(kin_char_params);
-	if (succ)
+	int num_char = static_cast<int>(mCharParams.size());
+	bool succ = false;
+	
+	mKinChars.clear();
+	for (int i=0; i < num_char; ++i)
 	{
-		mKinChar = kin_char;
+		
+		std::shared_ptr<cKinCharacter> kin_char;
+		const cSimCharacter::tParams& sim_char_params = mCharParams[i];
+		cKinCharacter::tParams kin_char_params;
+		kin_char_params.mID = i;
+		kin_char_params.mCharFile = sim_char_params.mCharFile;
+		kin_char_params.mOrigin = sim_char_params.mInitPos;
+		kin_char_params.mLoadDrawShapes = false;
+		bool succ = BuildKinCharacter(kin_char_params, kin_char);
+		mKinChars.push_back(kin_char);
+		
 	}
+	printf("Built characters");
 	return succ;
 }
 
-bool cSceneImitate::BuildKinController()
+bool cSceneImitate::BuildKinCharacter(const cKinCharacter::tParams& params, std::shared_ptr<cKinCharacter>& out_char) const
 {
-	const auto& curr_char = GetKinChar();
-	mKinCtrlParams.mChar = curr_char;
-
-	std::shared_ptr<cKinController> ctrl;
-	bool succ = cKinCtrlBuilder::BuildController(mKinCtrlParams, ctrl);
-	if (succ && ctrl != nullptr)
-	{
-		curr_char->SetController(ctrl);
-	}
-
+	out_char = std::shared_ptr<cKinCharacter>(new cKinCharacter());
+	bool succ = out_char->Init(params);
 	return succ;
+}
+
+bool cSceneImitate::BuildKinControllers()
+{
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i = 0; i < num_char; ++i)
+	{
+		auto& curr_char = GetKinChar(i);
+		mKinCtrlParams[i].mChar = curr_char;
+
+		std::shared_ptr<cKinController> ctrl;
+		bool succ = cKinCtrlBuilder::BuildController(mKinCtrlParams[i], ctrl);
+		if (succ && ctrl != nullptr)
+		{
+			curr_char->SetController(ctrl);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 void cSceneImitate::UpdateCharacters(double timestep)
 {
-	UpdateKinChar(timestep);
+	UpdateKinChars(timestep);
 	cRLSceneSimChar::UpdateCharacters(timestep);
 }
 
-void cSceneImitate::UpdateKinChar(double timestep)
+void cSceneImitate::UpdateKinChars(double timestep)
 {
-	const auto& kin_char = GetKinChar();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
+	{
+		UpdateKinChar(i, timestep);
+	}
+}
+
+void cSceneImitate::UpdateKinChar(int id, double timestep)
+{
+	const auto& kin_char = GetKinChar(id);
 	double prev_phase = kin_char->GetPhase();
 	kin_char->Update(timestep);
 	double curr_phase = kin_char->GetPhase();
 
 	if (curr_phase < prev_phase)
 	{
-		const auto& sim_char = GetCharacter();
+		const auto& sim_char = GetCharacter(id);
 		SyncKinCharNewCycle(*sim_char, *kin_char);
 	}
 }
@@ -320,21 +368,32 @@ void cSceneImitate::UpdateKinChar(double timestep)
 void cSceneImitate::ResetCharacters()
 {
 	cRLSceneSimChar::ResetCharacters();
-
-	ResetKinChar();
-	if (EnableSyncChar())
+	ResetKinChars();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
 	{
-		SyncCharacters();
+		if (EnableSyncChar(i))
+		{
+			SyncCharacter(i);
+		}
 	}
 }
 
-void cSceneImitate::ResetKinChar()
+void cSceneImitate::ResetKinChars()
 {
-	double rand_time = CalcRandKinResetTime();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
+	{
+		ResetKinChar(i);
+	}
+}
 
-	const cSimCharacter::tParams& char_params = mCharParams[0];
-	const auto& kin_char = GetKinChar();
+void cSceneImitate::ResetKinChar(int id)
+{
+	const cSimCharacter::tParams& char_params = mCharParams[id];
+	const auto& kin_char = GetKinChar(id);
 
+	double rand_time = CalcRandKinResetTime(id);
 	kin_char->Reset();
 	kin_char->SetOriginRot(tQuaternion::Identity());
 	kin_char->SetOriginPos(char_params.mInitPos); // reset origin
@@ -350,11 +409,20 @@ void cSceneImitate::ResetKinChar()
 
 void cSceneImitate::SyncCharacters()
 {
-	const auto& kin_char = GetKinChar();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
+	{
+		SyncCharacter(i);
+	}
+}
+
+void cSceneImitate::SyncCharacter(int id)
+{
+	const auto& kin_char = GetKinChar(id);
 	const Eigen::VectorXd& pose = kin_char->GetPose();
 	const Eigen::VectorXd& vel = kin_char->GetVel();
 	
-	const auto& sim_char = GetCharacter();
+	const auto& sim_char = GetCharacter(id);
 	sim_char->SetPose(pose);
 	sim_char->SetVel(vel);
 
@@ -362,14 +430,23 @@ void cSceneImitate::SyncCharacters()
 	auto ct_ctrl = dynamic_cast<cCtController*>(ctrl.get());
 	if (ct_ctrl != nullptr)
 	{
-		double kin_time = GetKinTime();
+		double kin_time = GetKinTime(id);
 		ct_ctrl->SetInitTime(kin_time);
 	}
 }
 
-bool cSceneImitate::EnableSyncChar() const
+void cSceneImitate::EnableSyncChars()
 {
-	const auto& kin_char = GetKinChar();
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
+	{
+		EnableSyncChar(i);
+	}
+}
+
+bool cSceneImitate::EnableSyncChar(int id) const
+{
+	const auto& kin_char = GetKinChar(id);
 	return kin_char->HasController();
 }
 
@@ -380,17 +457,30 @@ void cSceneImitate::InitCharacterPosFixed(const std::shared_ptr<cSimCharacter>& 
 
 void cSceneImitate::InitJointWeights()
 {
-	CalcJointWeights(GetCharacter(), mJointWeights);
+	int num_char = GetNumChars();
+	for (int i=0; i < num_char; ++i)
+	{
+		InitJointWeight(i);
+	}
+}
+
+void cSceneImitate::InitJointWeight(int id)
+{
+	CalcJointWeights(GetCharacter(id), mJointWeights);
 }
 
 void cSceneImitate::ResolveCharGroundIntersect()
 {
 	cRLSceneSimChar::ResolveCharGroundIntersect();
-
-	if (EnableSyncChar())
+	int num_char = static_cast<int>(mKinChars.size());
+	for (int i=0; i < num_char; ++i)
 	{
-		SyncKinCharRoot();
+		if (EnableSyncChar(i))
+		{
+			SyncKinCharRoot(i);
+		}
 	}
+	
 }
 
 void cSceneImitate::ResolveCharGroundIntersect(const std::shared_ptr<cSimCharacter>& out_char) const
@@ -398,13 +488,13 @@ void cSceneImitate::ResolveCharGroundIntersect(const std::shared_ptr<cSimCharact
 	cRLSceneSimChar::ResolveCharGroundIntersect(out_char);
 }
 
-void cSceneImitate::SyncKinCharRoot()
+void cSceneImitate::SyncKinCharRoot(int id)
 {
-	const auto& sim_char = GetCharacter();
+	const auto& sim_char = GetCharacter(id);
 	tVector sim_root_pos = sim_char->GetRootPos();
 	double sim_heading = sim_char->CalcHeading();
 
-	const auto& kin_char = GetKinChar();
+	const auto& kin_char = GetKinChar(id);
 	double kin_heading = kin_char->CalcHeading();
 
 	tQuaternion drot = tQuaternion::Identity();
@@ -443,20 +533,20 @@ void cSceneImitate::SyncKinCharNewCycle(const cSimCharacter& sim_char, cKinChara
 	}
 }
 
-double cSceneImitate::GetKinTime() const
+double cSceneImitate::GetKinTime(int id) const
 {
-	const auto& kin_char = GetKinChar();
+	const auto& kin_char = GetKinChar(id);
 	return kin_char->GetTime();
 }
 
-bool cSceneImitate::CheckKinNewCycle(double timestep) const
+bool cSceneImitate::CheckKinNewCycle(int id, double timestep) const
 {
 	bool new_cycle = false;
-	const auto& kin_char = GetKinChar();
+	const auto& kin_char = GetKinChar(id);
 	if (kin_char->EnableMotionLoop())
 	{
 		double cycle_dur = kin_char->GetMotionDuration();
-		double time = GetKinTime();
+		double time = GetKinTime(id);
 		new_cycle = cMathUtil::CheckNextInterval(timestep, time, cycle_dur);
 	}
 	return new_cycle;
@@ -476,7 +566,7 @@ bool cSceneImitate::HasFallen(const cSimCharacter& sim_char) const
 
 bool cSceneImitate::CheckRootRotFail(const cSimCharacter& sim_char) const
 {
-	const auto& kin_char = GetKinChar();
+	const auto& kin_char = GetKinChar(sim_char.GetID());
 	bool fail = CheckRootRotFail(sim_char, *kin_char);
 	return fail;
 }
@@ -491,9 +581,9 @@ bool cSceneImitate::CheckRootRotFail(const cSimCharacter& sim_char, const cKinCh
 	return rot_diff > threshold;
 }
 
-double cSceneImitate::CalcRandKinResetTime()
+double cSceneImitate::CalcRandKinResetTime(int id)
 {
-	const auto& kin_char = GetKinChar();
+	const auto& kin_char = GetKinChar(id);
 	double dur = kin_char->GetMotionDuration();
 	double rand_time = cMathUtil::RandDouble(0, dur);
 	return rand_time;

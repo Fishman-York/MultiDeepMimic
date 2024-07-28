@@ -325,6 +325,10 @@ void cRLSceneSimChar::RegisterAgent(const std::shared_ptr<cCharController>& ctrl
 			RegisterAgent(child_ctrl, character, out_ids);
 		}
 	}
+	else
+	{
+		printf("ctrl is a nullptr");
+	}
 }
 
 void cRLSceneSimChar::SetupTimerAnnealer(cAnnealer& out_annealer) const
