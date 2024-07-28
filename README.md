@@ -13,118 +13,80 @@ Code accompanying the following papers:
 The framework uses reinforcement learning to train a simulated humanoid to imitate a variety
 of motion skills from mocap data.
 
+## Installation
+  `sudo apt install libgl1-mesa-dev libx11-dev libxrandr-dev libxi-dev`
+  `sudo apt install mesa-utils`
+  `sudo apt install clang`
+  `sudo apt install cmake`
 
-## Dependencies
+- bullet3-3.25 (https://github.com/bulletphysics/bullet3/releases)
+  Use build flag USE_DOUBLE_PRECISION=OFF
 
-``sudo apt install libgl1-mesa-dev libx11-dev libxrandr-dev libxi-dev``
+  `./build_cmake_pybullet_double.sh`
+  `cd build_cmake`
+  `sudo make install`
 
-``sudo apt install mesa-utils``
+- Eigen-3.4.0 (https://www.eigen.tuxfamily.org/index.php?title=Main_Page)
+  `mkdir build && cd build`
+  `cmake ..`
+  `sudo make install`
 
-``sudo apt install clang``
+- Open GL >= 3.2
 
-``sudo apt install cmake``
+- freeglut-3.6.0 (https://freeglut.sourceforge.net/)
+  `cmake .`
+  `make`
+  `sudo make install`
 
-C++:
+- glew-2.1.0 (https://glew.sourceforge.net/)
+  `make`
+  `sudo make install`
+  `make clean`
 
-- Bullet 2.88 (https://github.com/bulletphysics/bullet3/releases)
+- swig-4.2.1 (https://www.swig.org/)
+  `./configure --without-pcre`
+  `make`
+  `sudo make install`
 
-  Download Bullet 2.88 from the above link and install using the following commands.
+- mpi
+  Install before mpi4y
+  `sudo apt install libopenmpi-dev`
+
+- python-3.7
+  `sudo apt install software-properties-common`
+  `sudo add-apt-repository ppa:deadsnakes/ppa`
+  `sudo apt update`
+  `sudo apt install python3.7`
+  `sudo apt-get install python3.7-dev`
   
-	``./build_cmake_pybullet_double.sh``
-	
-	``cd build_cmake``
-	
-	``sudo make install``
-
-- Eigen (http://www.eigen.tuxfamily.org/index.php?title=Main_Page) (Version : 3.3.7)
-
-	``mkdir build && cd build``
-	
-	``cmake ..``
-	
-	``sudo make install``
-
-- OpenGL >= 3.2
-- freeglut (http://freeglut.sourceforge.net/) ( Version : 3.0.0 )
-
-	``cmake .``
-	
-	``make``
-	
-	``sudo make install``
-  
-- glew (http://glew.sourceforge.net/) ( Version : 2.1.0 )
-
-	``make``
-	
-	``sudo make install``
-	
-	``make clean``
-
-Misc:
-
-- SWIG (http://www.swig.org/) ( Version : 4.0.0 )
-
-	``./configure --without-pcre``
-	
-	``make``
-	
-	``sudo make install``
-
-- MPI 
-	- Windows: https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi
-	- Linux: `sudo apt install libopenmpi-dev`
-
-
-Python:
-
-- Python 3
-- PyOpenGL (http://pyopengl.sourceforge.net/) 
-
-``pip install PyOpenGL PyOpenGL_accelerate``
-
-- Tensorflow (https://www.tensorflow.org/) ( Vesrion : 1.13.1 )
-
-``pip install tensorflow`` 
-- MPI4Py (https://mpi4py.readthedocs.io/en/stable/install.html)
-
-``pip install mpi4py``
+- python virtual env
+  `python3.7 -m venv "DeepMimicEnv"`
+  `source DeepMimicEnv/bin/activate`
+  `pip install -r env/requirements.txt`
 
 ## Build
 The simulated environments are written in C++, and the python wrapper is built using SWIG.
-Note that MPI must be installed before MPI4Py. When building Bullet, be sure to disable double precision with the build flag `USE_DOUBLE_PRECISION=OFF`.
-
-### Windows
-The wrapper is built using `DeepMimicCore.sln`.
-
-1. Select the `x64` configuration from the configuration manager.
-
-2. Under the project properties for `DeepMimicCore` modify `Additional Include Directories` to specify
-	- Bullet source directory
-	- Eigen include directory
-	- python include directory
-
-3. Modify `Additional Library Directories` to specify
-	- Bullet lib directory
-	- python lib directory
-
-4. Build `DeepMimicCore` project with the `Release_Swig` configuration and this should
-generate `DeepMimicCore.py` in `DeepMimicCore/`.
-
 
 ### Linux
-1. Modify the `Makefile` in `DeepMimicCore/` by specifying the following,
-	- `EIGEN_DIR`: Eigen include directory
-	- `BULLET_INC_DIR`: Bullet source directory
-	- `PYTHON_INC`: python include directory
-	- `PYTHON_LIB`: python lib directory
+1. Modify the `Makefile` in `DeepMimicCore/` by changing the following,
+	`PYTHON_INC`
+	`PYTHON_LIB`
+	`EIGEN_DIR`
+	`BULLET_INC_DIR`
+	`BULLET_LIB_DIR`
+	`GLEW_LIB_DIR`
+	`FREEGLUT_LIB_DIR`
 
-2. Build wrapper,
-	```
-	make python
-	```
+2. Go into DeepMimicCore directory
+
+	`cd DeepMimic/DeepMimicCore`
+
+3. Build wrapper,
+	
+	`make clean`
+	`make python`
+	
 This should generate `DeepMimicCore.py` in `DeepMimicCore/`
-
 
 ## How to Use
 Once the python wrapper has been built, training is done entirely in python using Tensorflow.
@@ -225,6 +187,8 @@ and 1D rotations for revolute joints (e.g. knees and elbows) are represented wit
 positions and rotations are in world coordinates, but all other joint rotations are in the joint's local coordinates.
 To use your own motion clip, convert it to a similar style JSON file.
 
+## Arg Files
+
 ## Possible Issues and Solutions
 
 ImportError: libGLEW.so.2.1: cannot open shared object file: No such file or directory
@@ -235,7 +199,3 @@ ln /path/to/libGLEW.so.2.1.0 /usr/lib/x86----/libGLEW.so.2.1.0
 ImportError: libBulletDynamics.so.2.88: cannot open shared object file: No such file or directory
 export LD_LIBRARY_PATH=/usr/local/lib/ ( can be temporary when run in terminal) 
 (libBullet file are present in that path - gets installed in that path after the command sudo make install while installing Bullet)
-
-## Misc.
-- A ROS compatible URDF of the humanoid is available here: https://github.com/EricVoll/amp_motion_conversion
-
