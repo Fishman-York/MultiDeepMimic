@@ -373,8 +373,6 @@ void cDrawScene::DrawScene()
 		cDrawUtil::PopMatrixProj();
 		cDrawUtil::PopMatrixView();
 	}
-
-	DrawCompass();
 }
 
 void cDrawScene::DrawGrid() const
