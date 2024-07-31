@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.29)  31 JUL 2024 23:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.29)  1 AUG 2024 03:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1322,43 +1322,75 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages 
 \l__siunitx_unit_tmp_int=\count384
 \l__siunitx_unit_position_int=\count385
 \l__siunitx_unit_total_int=\count386
-) (c:/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+ (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (c:/texlive/2024/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box96
+)
+\tc@llx=\dimen326
+\tc@lly=\dimen327
+\tc@urx=\dimen328
+\tc@ury=\dimen329
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen330
+\adjbox@Height=\dimen331
+\adjbox@Depth=\dimen332
+\adjbox@Totalheight=\dimen333
+\adjbox@pwidth=\dimen334
+\adjbox@pheight=\dimen335
+\adjbox@pdepth=\dimen336
+\adjbox@ptotalheight=\dimen337
+ (c:/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box97
+\sift@deathcycles=\count387
+\@vwid@loff=\dimen338
+\@vwid@roff=\dimen339
+)) (c:/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2024/05/29 v0.6a Insert pages of external PDF documents (AM)
  (c:/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count387
-\calc@Bcount=\count388
-\calc@Adimen=\dimen326
-\calc@Bdimen=\dimen327
+\calc@Acount=\count388
+\calc@Bcount=\count389
+\calc@Adimen=\dimen340
+\calc@Bdimen=\dimen341
 \calc@Askip=\skip135
 \calc@Bskip=\skip136
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count389
+\calc@Ccount=\count390
 \calc@Cskip=\skip137
 ) (c:/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen328
-\ESO@tempdimb=\dimen329
+\ESO@tempdima=\dimen342
+\ESO@tempdimb=\dimen343
 )
-\AM@pagewidth=\dimen330
-\AM@pageheight=\dimen331
-\AM@fboxrule=\dimen332
+\AM@pagewidth=\dimen344
+\AM@pageheight=\dimen345
+\AM@fboxrule=\dimen346
  (c:/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/05/29 v0.6a Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count390
-\AM@pagebox=\box96
+\pdfpages@includegraphics@status=\count391
+\AM@pagebox=\box98
 \AM@global@opts=\toks57
-\AM@pagecnt=\count391
+\AM@pagecnt=\count392
 \AM@toc@title=\toks58
 \AM@lof@heading=\toks59
-\c@AM@survey=\count392
-\AM@templatesizebox=\box97
+\c@AM@survey=\count393
+\AM@templatesizebox=\box99
 ) (c:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count393
-\l__pdf_internal_box=\box98
+\l__color_backend_stack_int=\count394
+\l__pdf_internal_box=\box100
 ) (./l4proj.aux)
 \openout1 = `l4proj.aux'.
 
@@ -1406,8 +1438,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-\c@mv@tabular=\count394
-\c@mv@boldtabular=\count395
+\c@mv@tabular=\count395
+\c@mv@boldtabular=\count396
 LaTeX Info: Command `\dddot' is already robust on input line 14.
 LaTeX Info: Command `\ddddot' is already robust on input line 14.
 LaTeX Info: Redefining \microtypecontext on input line 14.
@@ -1432,16 +1464,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  (c:/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count396
-\scratchdimen=\dimen333
-\scratchbox=\box99
-\nofMPsegments=\count397
-\nofMParguments=\count398
+\scratchcounter=\count397
+\scratchdimen=\dimen347
+\scratchbox=\box101
+\nofMPsegments=\count398
+\nofMParguments=\count399
 \everyMPshowfont=\toks60
-\MPscratchCnt=\count399
-\MPscratchDim=\dimen334
-\MPnumerator=\count400
-\makeMPintoPDFobject=\count401
+\MPscratchCnt=\count400
+\MPscratchDim=\dimen348
+\MPnumerator=\count401
+\makeMPintoPDFobject=\count402
 \everyMPtoPDFconversion=\toks61
 ) (c:/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1449,7 +1481,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count402
+\c@lstlisting=\count403
 Package hyperref Info: Link coloring OFF on input line 14.
  (./l4proj.out) (./l4proj.out)
 \@outlinefile=\write4
@@ -1556,14 +1588,14 @@ LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.33 \end{abstract}
+l.28 \end{abstract}
                     [1]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.59 \educationalconsent
+l.54 \educationalconsent
                          [1
 
 ]
@@ -1655,9 +1687,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [4]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <24.88> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 97.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 92.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 24.88pt on input line 97.
+(Font)              scaled to size 24.88pt on input line 92.
 
 
 [1
@@ -1669,7 +1701,7 @@ LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
 ]
 Chapter 2.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 127.
+(Font)              scaled to size 12.0pt on input line 122.
 
 
 [3
@@ -1691,87 +1723,87 @@ LaTeX Font Info:    Font shape `T1/fbb-TLF/b/n' will be
 ]
 Chapter 3.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.2pt on input line 178.
-LaTeX Font Info:    Trying to load font information for T1+FiraMono-TOsF on input line 178.
+(Font)              scaled to size 6.2pt on input line 173.
+LaTeX Font Info:    Trying to load font information for T1+FiraMono-TOsF on input line 173.
 (c:/texlive/2024/texmf-dist/tex/latex/fira/T1FiraMono-TOsF.fd
 File: T1FiraMono-TOsF.fd 2019/10/10 (autoinst) Font definitions for T1/FiraMono-TOsF.
 )
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/m/n' in size <8> not available
-(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 178.
+(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 173.
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 173.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `FiraMono-TOsF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/m/n' in size <9> not available
-(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 178.
+(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 173.
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 173.
 <images/deepmimic_humanoid_format.png, id=401, 258.21469pt x 259.7203pt>
 File: images/deepmimic_humanoid_format.png Graphic file (type png)
 <use images/deepmimic_humanoid_format.png>
-Package pdftex.def Info: images/deepmimic_humanoid_format.png  used on input line 182.
+Package pdftex.def Info: images/deepmimic_humanoid_format.png  used on input line 177.
 (pdftex.def)             Requested size: 199.1693pt x 200.33795pt.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 184.
+(Font)              scaled to size 10.0pt on input line 179.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 184.
+(Font)              scaled to size 10.0pt on input line 179.
 <images/smplx_format.png, id=409, 217.5628pt x 130.98938pt>
 File: images/smplx_format.png Graphic file (type png)
 <use images/smplx_format.png>
-Package pdftex.def Info: images/smplx_format.png  used on input line 197.
+Package pdftex.def Info: images/smplx_format.png  used on input line 192.
 (pdftex.def)             Requested size: 199.1693pt x 119.92204pt.
 <images/humanoids_in_program.png, id=411, 493.0922pt x 345.54094pt>
 File: images/humanoids_in_program.png Graphic file (type png)
 <use images/humanoids_in_program.png>
-Package pdftex.def Info: images/humanoids_in_program.png  used on input line 210.
+Package pdftex.def Info: images/humanoids_in_program.png  used on input line 205.
 (pdftex.def)             Requested size: 199.1693pt x 139.56895pt.
 
 
@@ -1785,18 +1817,18 @@ Package pdftex.def Info: images/humanoids_in_program.png  used on input line 210
 <images/deepmimic_play_args.png, id=439, 300.3722pt x 83.5622pt>
 File: images/deepmimic_play_args.png Graphic file (type png)
 <use images/deepmimic_play_args.png>
-Package pdftex.def Info: images/deepmimic_play_args.png  used on input line 232.
+Package pdftex.def Info: images/deepmimic_play_args.png  used on input line 227.
 (pdftex.def)             Requested size: 179.25114pt x 49.86865pt.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 233.
+(Font)              scaled to size 9.0pt on input line 228.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 233.
+(Font)              scaled to size 9.0pt on input line 228.
 LaTeX Font Info:    Font shape `T1/fbb-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 233.
+(Font)              scaled to size 9.0pt on input line 228.
 <images/deepmimic_simulate_args.png, id=440, 368.1253pt x 369.63094pt>
 File: images/deepmimic_simulate_args.png Graphic file (type png)
 <use images/deepmimic_simulate_args.png>
-Package pdftex.def Info: images/deepmimic_simulate_args.png  used on input line 237.
+Package pdftex.def Info: images/deepmimic_simulate_args.png  used on input line 232.
 (pdftex.def)             Requested size: 179.25114pt x 179.98708pt.
  (c:/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
@@ -1805,11 +1837,11 @@ File: lstlang1.sty 2024/05/25 1.10b listings language file
 ) (c:/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 247.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 242.
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/m/n' in size <10> not available
-(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 247.
+(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 242.
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
-(Font)              scaled to size 10.0pt on input line 247.
+(Font)              scaled to size 10.0pt on input line 242.
 
 
 [11
@@ -1828,16 +1860,16 @@ LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
 Chapter 4.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 415.
+               Default added (so using `tbp') on input line 410.
 
 <images/smpl_joint_structure.png, id=614, 390.70969pt x 395.22656pt>
 File: images/smpl_joint_structure.png Graphic file (type png)
 <use images/smpl_joint_structure.png>
-Package pdftex.def Info: images/smpl_joint_structure.png  used on input line 437.
+Package pdftex.def Info: images/smpl_joint_structure.png  used on input line 432.
 (pdftex.def)             Requested size: 199.1693pt x 201.47241pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 444.
+               Default added (so using `tbp') on input line 439.
 
 
 
@@ -1855,7 +1887,7 @@ LaTeX Warning: No positions in optional float specifier.
 <images/class_structure.png, id=661, 151.767pt x 90.5784pt>
 File: images/class_structure.png Graphic file (type png)
 <use images/class_structure.png>
-Package pdftex.def Info: images/class_structure.png  used on input line 619.
+Package pdftex.def Info: images/class_structure.png  used on input line 614.
 (pdftex.def)             Requested size: 398.3386pt x 237.76355pt.
 
 
@@ -1881,94 +1913,130 @@ Chapter 6.
 
 ]
 
-Package TODO: Warning: add in concrete samples! on input line 726.
-
-
-
 [28]
+<images/punch_convert_output.png, id=724, 237.88875pt x 256.70906pt>
+File: images/punch_convert_output.png Graphic file (type png)
+<use images/punch_convert_output.png>
+Package pdftex.def Info: images/punch_convert_output.png  used on input line 718.
+(pdftex.def)             Requested size: 179.25114pt x 193.44006pt.
+<images/punch_convert_output_2.png, id=725, 240.14719pt x 254.45062pt>
+File: images/punch_convert_output_2.png Graphic file (type png)
+<use images/punch_convert_output_2.png>
+Package pdftex.def Info: images/punch_convert_output_2.png  used on input line 723.
+(pdftex.def)             Requested size: 179.25114pt x 189.92896pt.
+<images/multiple_agent0_1.png, id=728, 244.66406pt x 256.70906pt>
+File: images/multiple_agent0_1.png Graphic file (type png)
+<use images/multiple_agent0_1.png>
+Package pdftex.def Info: images/multiple_agent0_1.png  used on input line 735.
+(pdftex.def)             Requested size: 179.25114pt x 188.0776pt.
+<images/multiple_agent1_1.png, id=729, 239.39438pt x 257.46187pt>
+File: images/multiple_agent1_1.png Graphic file (type png)
+<use images/multiple_agent1_1.png>
+Package pdftex.def Info: images/multiple_agent1_1.png  used on input line 740.
+(pdftex.def)             Requested size: 179.25114pt x 192.78163pt.
+<images/agent0_later_training.png, id=730, 243.91125pt x 288.3272pt>
+File: images/agent0_later_training.png Graphic file (type png)
+<use images/agent0_later_training.png>
+Package pdftex.def Info: images/agent0_later_training.png  used on input line 750.
+(pdftex.def)             Requested size: 179.25114pt x 211.89374pt.
+<images/agent1_later_training.png, id=731, 243.91125pt x 288.3272pt>
+File: images/agent1_later_training.png Graphic file (type png)
+<use images/agent1_later_training.png>
+Package pdftex.def Info: images/agent1_later_training.png  used on input line 755.
+(pdftex.def)             Requested size: 179.25114pt x 211.89374pt.
+<images/interaction_fail.png, id=733, 597.73312pt x 333.49594pt>
+File: images/interaction_fail.png Graphic file (type png)
+<use images/interaction_fail.png>
+Package pdftex.def Info: images/interaction_fail.png  used on input line 767.
+(pdftex.def)             Requested size: 179.25114pt x 100.00883pt.
+<images/interaction.png, id=734, 597.73312pt x 335.75438pt>
+File: images/interaction.png Graphic file (type png)
+<use images/interaction.png>
+Package pdftex.def Info: images/interaction.png  used on input line 772.
+(pdftex.def)             Requested size: 179.25114pt x 100.6861pt.
+
+
+[29 <./images/punch_convert_output.png> <./images/punch_convert_output_2.png>]
+
+[30 <./images/multiple_agent0_1.png> <./images/multiple_agent1_1.png> <./images/agent0_later_training.png> <./images/agent1_later_training.png>]
+
+[31 <./images/interaction_fail.png> <./images/interaction.png>]
 Chapter 7.
-
-
-[29
-
-]
-
-[30]
-Appendix A.
-LaTeX Font Info:    Trying to load font information for TS1+fbb-TLF on input line 757.
-(c:/texlive/2024/texmf-dist/tex/latex/fbb/TS1fbb-TLF.fd
-File: TS1fbb-TLF.fd 2015/08/23 (autoinst) Font definitions for TS1/fbb-TLF.
-)
-LaTeX Font Info:    Font shape `TS1/fbb-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 757.
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `fbb-TLF' (encoding: TS1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/m/n' in size <12> not available
-(Font)              Font shape `T1/FiraMono-TOsF/regular/n' tried instead on input line 762.
-LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 762.
- (./l4proj.bbl
-
-[31
-
-
-{c:/texlive/2024/texmf-dist/fonts/enc/dvips/fbb/fbb_dejuay.enc}]
-LaTeX Font Info:    Font shape `T1/fbb-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 4.
-
-Underfull \hbox (badness 1721) in paragraph at lines 16--17
-[]\T1/fbb-TLF/m/n/12 (+20) Dexerto (2024), `Stel-lar blade di-rec-tor talks about the chal-lenge of de-
- []
-
-
-Overfull \hbox (22.51224pt too wide) in paragraph at lines 16--17
-\T1/FiraMono-TOsF/regular/n/9 stellar-[]blade-[]director-[]talks-[]about-[]the-[]challenge-[]of-[]developing-[]eve-[]2621380/$[]\T1/fbb-TLF/m/n/12 (-20) . 
- []
-
-
-Underfull \hbox (badness 2856) in paragraph at lines 35--36
-[]\T1/fbb-TLF/m/n/12 (+20) Lee, T. (2023), `Cost of cgi: Cgi scenes in mar-vel uni-verse movies
- []
-
 
 
 [32
 
 ]
-Underfull \hbox (badness 1400) in paragraph at lines 60--61
-[]\T1/fbb-TLF/m/n/12 (+20) Wagner, K. (2023), `Lessons from the catas-trophic fail-ure of the meta-
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
-\T1/fbb-TLF/m/n/12 (+20) verse --- then-ation.com', []$\T1/FiraMono-TOsF/regular/n/9 https : / / www . thenation . com / article / culture /
- []
-
+[33]
+Appendix A.
+LaTeX Font Info:    Trying to load font information for TS1+fbb-TLF on input line 810.
+(c:/texlive/2024/texmf-dist/tex/latex/fbb/TS1fbb-TLF.fd
+File: TS1fbb-TLF.fd 2015/08/23 (autoinst) Font definitions for TS1/fbb-TLF.
 )
+LaTeX Font Info:    Font shape `TS1/fbb-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 810.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `fbb-TLF' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ (./l4proj.bbl
 
-[33] (./l4proj.aux)
+[34
+
+
+{c:/texlive/2024/texmf-dist/fonts/enc/dvips/fbb/fbb_dejuay.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+[]\T1/fbb-TLF/m/n/10 (+20) Dexerto (2024), `Stel-lar blade di-rec-tor talks about the chal-lenge of de-vel-op-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+\T1/fbb-TLF/m/n/10 (+20) ing eve - dex-erto --- dex-erto.com', []$\T1/FiraMono-TOsF/regular/n/9 https : / / www . dexerto . com / gaming /
+ []
+
+
+Overfull \hbox (22.37035pt too wide) in paragraph at lines 16--17
+\T1/FiraMono-TOsF/regular/n/9 stellar-[]blade-[]director-[]talks-[]about-[]the-[]challenge-[]of-[]developing-[]eve-[]2621380/$[]\T1/fbb-TLF/m/n/10 (-20) . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+[]\T1/fbb-TLF/m/n/10 (+20) Lee, T. (2023), `Cost of cgi: Cgi scenes in mar-vel uni-verse movies (2023)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+\T1/fbb-TLF/m/n/10 (+20) --- acade-my-ofan-i-matedart.com', []$\T1/FiraMono-TOsF/regular/n/9 https : / / academyofanimatedart . com /
+ []
+
+
+
+[35
+
+])
+
+[36] (./l4proj.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
  ***********
 Package rerunfilecheck Info: File `l4proj.out' has not changed.
-(rerunfilecheck)             Checksum: 2B7A3C54FF25040D95AAED06CE2B9C6E;9535.
+(rerunfilecheck)             Checksum: 3563F54AA16005D707368EB9AF8E8558;9535.
  ) 
 Here is how much of TeX's memory you used:
- 41821 strings out of 473583
- 803111 string characters out of 5732342
+ 42675 strings out of 473583
+ 819519 string characters out of 5732342
  1991908 words of memory out of 5000000
- 63319 multiletter control sequences out of 15000+600000
- 794936 words of font info for 414 fonts, out of 8000000 for 9000
+ 64217 multiletter control sequences out of 15000+600000
+ 782966 words of font info for 364 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,14n,131p,1932b,1422s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/fira/FiraMono-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/fbb/fbb-BoldItalic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on l4proj.pdf (39 pages, 922144 bytes).
+Output written on l4proj.pdf (42 pages, 1183730 bytes).
 PDF statistics:
- 874 PDF objects out of 1000 (max. 8388607)
- 792 compressed objects within 8 object streams
- 286 named destinations out of 1000 (max. 500000)
- 94685 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 914 PDF objects out of 1000 (max. 8388607)
+ 812 compressed objects within 9 object streams
+ 294 named destinations out of 1000 (max. 500000)
+ 88069 words of extra memory for PDF output out of 89155 (max. 10000000)
 

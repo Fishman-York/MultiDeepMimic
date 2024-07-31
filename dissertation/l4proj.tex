@@ -1,6 +1,6 @@
 % REMEMBER: You must not plagiarise anything in your report. Be extremely careful.
 \documentclass{l4proj}
-
+\usepackage{adjustbox}
     
 %==============================================================================
 % Put any additional packages here
@@ -24,12 +24,7 @@
 %==============================================================================
 %% ABSTRACT
 \begin{abstract}
-    Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
-    \vskip 0.5em
-    ``XYZ is bad. This project investigated ABC to determine if it was better. 
-    ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have
-    never been used together. It was found that  
-    ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
+    DeepMimic is a deep reinforcement learning physics-based character animator that is hasn't implemented multiple character interactions. This project aims to discover if it is possible to implement multiple character interactions and apply reinforcement learning to make simulation more stable. The purpose of this was to further advance the projects that apply deep reinforcement learning such that they can be more widely used.
 \end{abstract}
 
 %=============================================================================
@@ -41,7 +36,7 @@
 % We give thanks to the Gods of LaTeX, who in their eternal graciousness, 
 % have granted that this document may compile without errors or overfull hboxes.
 %
-
+Thank you to my supervisor for his eternal patience and kindness.
 %==============================================================================
 
 % EDUCATION REUSE CONSENT FORM
@@ -643,9 +638,7 @@ In the end, I ended up having to make another python file, which took DeepMimic 
 \section{Argument Parsing}
 For argument parsing, I made the arguments for the usage of display and simulation consistent. This involved making sure display accepted the simulation argument of "character\_files", instead of a singular "character\_file" in its argument. Keeping the same convention is important so as to not confuse the user. I then went through the arguments parsers, where I made all relevant arguments accept an array of the objects they were supposed to receive. This was meant to prepare for the implementation of multiple characters.
 
-I also implemented a python script, that generated an argument file for the user. When running the script, the output prompts you with a question of what you'd like to do, display, simulate or train. After the user selects one, the program then asks further relevant questions based on previously selected answers. For example, for display, the program just asks questions about the motion file and character file the user wanted to use. For simulation, the questions asked are more expansive, such as selecting a policy file. This should help users who don't want to manually edit the argument files due to a fear of getting something wrong.
-
-For users who do want to edit the argument files, I have prepared the relevant documentation for them. This documentation comes in the form of a readme, which contains the same structure as the automated argument file making, splitting them up in a logical way. In the document, arguments and their respective valid inputs are given.
+For users who do want to edit the argument files, I have prepared the relevant documentation for them in Table \ref{tab:arguments}. This documentation comes in this dissertation, in the appendix, which contains the same structure as the argument file making, splitting them up in a logical way. In the document, arguments and their respective valid inputs are given.
 
 \section{Display}
 My first attempt at making multiple characters function was to display two characters at once. Logically, this is the easiest one to do, as it only involves one scene. At this time, I was relatively inexperienced in C++, so I struggled with adapting the pre-existing source code. However, I was able to find a fork request from Github user Yiziki\footnote{\url{https://github.com/xbpeng/DeepMimic/pull/199}}, which had attempted to implement the display of multiple characters as well. Their implementation did not work, but was useful in providing the syntax and classes that I needed to focus on. They also had trouble with their argument files, leading to segmentation faults, which is partially why their implementation did not work. I edited my clone of the DeepMimic repository and fixed the relevant functions, being related to argument parsing, character initialisation, and drawing of the characters, along with the functions that involved fetching a character by id. These functions had to be overloaded as I was unsure if any other functions would use the non-overloaded ones, but I changed the majority of retrievals to use the id parameter.
@@ -697,6 +690,8 @@ Once the Imitate scene is finished, I started working on training policies. Firs
 
 I used the policy that was made during the solo training of our inversed puncher and put two characters in a scene together, with a fixed position. One character used the inversed policy, and the other, the normal policy. I judged the position myself by slowly increasing the offset values until they were interacting in a way that I wanted them to. My criteria for this was that they had to be far enough to not completely collide into each other before completing their motion, but close enough such that the edges of their motion still collided with each other.
 
+Looking through the logs of the policies that were trained, I saw that they were quite hard to read. I decided to write a script in python that converted the last outcome of the logs to be more presentable.
+
 %==================================================================================================================================
 \chapter{Evaluation}
 
@@ -713,17 +708,78 @@ The reason why the random character placement is important is because the goal o
 The standardisation of argument files was only made for Scene Imitate and Scene Kin Char. There are still many other scenes that have discrepancies in their argument files, but for the purpose of this research, the goals achieved were what needed to be focused on.
 
 Additionally, the documentation solves a lot of issues I had with having to scrounge around. Documentation for programs in this day and age is very important, as it is important for anyone to be able to read through your code and distinguish what it is doing, or how they should interact with it. The documentation I wrote is made only for this project in mind, though, which means that it is focused on three things that the user would want, that being display, simulation, and training. While this layout for the documentation does make sense from a logical and convenient standpoint, it might also obfuscate some argument someone is trying to find when they do not have the same purpose as what I have achieved.
-
-The implementation of the script to automate creation of argument files isn't perfect. Users still have to run the python script to generate the argument file they want. Moreover, this method of reading an output and having the user input something is hardly time-efficient. That being said, the automation for the creation of argument files leaves a user less room for error, particularly one who is unfamiliar and unwilling to go through the source code to figure out which arguments they can even use.
-
+\pagebreak
 \subsection{Being Able to Make Multiple Characters Interact}
-The program works, and we are able to simulate and make characters interact. The more a policy is run for solo characters, the more likely that a character's movement will be successful. This also holds true when training two characters. We can see that as the program reaches more samples, the train\_return value slowly increases, and so does the test\_return. Something that might confuse the results is the lack of ability to pause and resume the training, as trying the workaround to do so tends to lower the train\_return field for a while.
+The program works, and we are able to simulate and make characters interact. The more a policy is run for solo characters, the more likely that a character's movement will be successful. This also holds true when training two characters. We can see that as the program reaches more samples, the train\_return value slowly increases, and so does the test\_return. Something that might confuse the results is the lack of ability to pause and resume the training, as trying the workaround to do so tends to lower the train\_return field for a while. This is seen in Figure \ref{fig:punchconvertoutput}, which had to resume training.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/punch_convert_output.png}
+    \caption{An output from DeepMimic, showing the statistics of the earliest run of training Punch Convert}
+    \label{fig:punchconvertoutput1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/punch_convert_output_2.png}
+    \caption{An output from DeepMimic, showing the statistics of the later run of training Punch Convert}
+    \label{fig:punchconvertoutput2}
+  \end{subfigure}
+  \caption{Outputs from DeepMimic, showing policy training on the solo conversion of the punch movement that was flipped about the y axis}
+  \label{fig:punchconvertoutput}
+\end{figure}
+
+The training of the multiple characters interacting went well. Each iteration returned a larger train and test return number, which showed that both models were increasingly learning. This is seen in the difference of results in Figure \ref{fig:earlymultipletrainingresults} and \ref{fig:multipletrainingresults}, where there is a difference of train return, that being $30.2-13.5=16.7$, and a difference in test return, being $26.4-19.9=6.5$. The huge jump in successful returns is probably related to the huge difference in samples, with the earlier run only having 7589798 samples, and the later model having that number plus its own, $7589798+52632477=60222275$. This number is the bare minimum that Peng said would give consistent results to simple movements.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/multiple_agent0_1.png}
+    \caption{An output from DeepMimic, showing the statistics of Agent0}
+    \label{fig:earlymultipletrainingresults1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/multiple_agent1_1.png}
+    \caption{An output from DeepMimic, showing the statistics of Agent1}
+    \label{fig:earlymultipletrainingresults2}
+  \end{subfigure}
+  \caption{Outputs from DeepMimic, showing an earlier run of policy training on multiple characters interacting with each other}
+  \label{fig:earlymultipletrainingresults}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/agent0_later_training.png}
+    \caption{An output from DeepMimic, showing the statistics of Agent0}
+    \label{fig:multipletrainingresults1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/agent1_later_training.png}
+    \caption{An output from DeepMimic, showing the statistics of Agent1}
+    \label{fig:multipletrainingresults2}
+  \end{subfigure}
+  \caption{Outputs from DeepMimic, showing the last policy training on the multiple characters of the punch movement}
+  \label{fig:multipletrainingresults}
+\end{figure}
+
+In Figure \ref{fig:picturedinteraction}, we see the difference in policies trained. When learning on their own, the characters miss each other completely, which is not a desired outcome. However, the characters that learned together are able to punch each other and still retain a consistent movement. The difference in outcomes here show that my implementation works, and delivers more consistent results than programs that would just train their own characters solitarily.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/interaction_fail.png}
+    \caption{The simulation of policies that used the individual characters learning on their own}
+    \label{fig:interactionfail}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/interaction.png}
+    \caption{The simulation of policies that had the characters learning together}
+    \label{fig:interactionsucceed}
+  \end{subfigure}
+  \caption{DeepMimic running simulations on multiple characters. The graph in the upper-right tracks the success of the movement of the character. The lower it goes, the poorer the character performed.}
+  \label{fig:picturedinteraction}
+\end{figure}
 
 Due to the nature of this program, possible difficulties arise. One such issue is the training of multiple characters at once. The code calls for a reset of the scene if a character falls down. This means that no matter which character falls, the controllers are reset, and the agent decides that the movement was a failure and marks it down as such. This doesn't take into account the circumstance of one character failing and the other one succeeding. Because one character fails, the other character also marks it as a negative outcome even if their motion was about to succeed, creating a false negative, and thus what the character learns would be wrong.
 
 Another issue that arises it definitely the long amount of time that the program takes to run. To properly train a simple policy, \cite{deepmimic} describes how it takes almost a day, sixty million samples roughly. When we factor in another character, this makes the movement much more complicated, and thus more samples would need to be generated, leading to higher run times. If we naively assume that adding on another character would double the amount of samples needed, that means that the program would take two days to run, which is not ideal.
-
-\todo{add in concrete samples}
 
 %==================================================================================================================================
 \chapter{Conclusion}    
@@ -749,24 +805,56 @@ To take this further, I would like to see what happens when training character i
 
 \chapter{Appendices}
 
-Use separate appendix chapters for groups of ancillary material that support your dissertation. 
-Typical inclusions in the appendices are:
-
 \begin{itemize}
 \item
-  Extensive tables or figures that are too bulky to fit in the main body of
-  the report, particularly ones that are repetitive and summarised in the body.
-\item Outline of the source code (e.g. directory structure), 
-    or other architecture documentation like class diagrams.
-\item User manuals, and any guides to starting/running the software. 
-Your equivalent of \texttt{readme.md} should be included.
+\begin{table}[ht]
+  \centering
+  \caption{The arguments important to this project. A label of 1 means only 1 argument is needed, and M relates to the amount of characters wanted.}\label{tab:arguments}
+  \begin{adjustbox}{width=1\textwidth}
+  \small
+  \begin{tabular}{|ll
+  >{\columncolor[HTML]{C0C0C0}}l |ll
+  >{\columncolor[HTML]{C0C0C0}}l |ll
+  >{\columncolor[HTML]{C0C0C0}}l |}
+  \hline
+  \multicolumn{3}{|l|}{\cellcolor[HTML]{9B9B9B}For Display}                                        & \multicolumn{3}{l|}{\cellcolor[HTML]{9B9B9B}For Simulation}                                                                     & \multicolumn{3}{l|}{\cellcolor[HTML]{9B9B9B}For Training}                                                                                    \\ \hline
+  \multicolumn{1}{|l|}{scene}            & \multicolumn{1}{l|}{kin\_char}                      &   & \multicolumn{1}{l|}{scene}                         & \multicolumn{1}{l|}{imitate}                                           &   & \multicolumn{1}{l|}{scene}                       & \multicolumn{1}{l|}{imitate}                                                          &   \\ \hline
+  \multicolumn{1}{|l|}{character\_files} & \multicolumn{1}{l|}{data/characters/humanoid3d.txt} & M & \multicolumn{1}{l|}{enable\_rand\_char\_placement} & \multicolumn{1}{l|}{boolean true/false}                                & 1 & \multicolumn{1}{l|}{time\_lim\_min}              & \multicolumn{1}{l|}{0.5}                                                              & 1 \\ \hline
+  \multicolumn{1}{|l|}{kin\_ctrl}        & \multicolumn{1}{l|}{motion}                         & 1 & \multicolumn{1}{l|}{num\_update\_substeps}         & \multicolumn{1}{l|}{10}                                                & 1 & \multicolumn{1}{l|}{time\_lim\_max}              & \multicolumn{1}{l|}{0.5}                                                              & 1 \\ \hline
+  \multicolumn{1}{|l|}{motion\_files}    & \multicolumn{1}{l|}{path to motion file}            & M & \multicolumn{1}{l|}{world\_scale}                  & \multicolumn{1}{l|}{4}                                                 & 1 & \multicolumn{1}{l|}{time\_lim\_exp}              & \multicolumn{1}{l|}{0.2}                                                              & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{terrain\_file}                 & \multicolumn{1}{l|}{data/terrain/plane.txt}                            & 1 & \multicolumn{1}{l|}{time\_end\_lim\_min}         & \multicolumn{1}{l|}{20}                                                               & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{char\_types}                   & \multicolumn{1}{l|}{general}                                           & 1 & \multicolumn{1}{l|}{time\_end\_lim\_max}         & \multicolumn{1}{l|}{20}                                                               & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{character\_files}              & \multicolumn{1}{l|}{data/characters/humanoid3d.txt}                    & M & \multicolumn{1}{l|}{time\_end\_lim\_max}         & \multicolumn{1}{l|}{50}                                                               & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{char\_init\_pos\_xs}           & \multicolumn{1}{l|}{double (e.g. 0.0)}                                 & M & \multicolumn{1}{l|}{time\_end\_lim\_exp}         & \multicolumn{1}{l|}{50}                                                               & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{char\_init\_pos\_zs}           & \multicolumn{1}{l|}{double (e.g. 0.0)}                                 & M & \multicolumn{1}{l|}{anneal\_samples}             & \multicolumn{1}{l|}{32000000}                                                         & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{enable\_char\_soft\_contact}   & \multicolumn{1}{l|}{false}                                             & 1 & \multicolumn{1}{l|}{num\_update\_substeps}       & \multicolumn{1}{l|}{10}                                                               & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{fall\_contact\_bodies}         & \multicolumn{1}{l|}{0 1 2 3 4 6 7 8 9 10 12 13 14}                     & 1 & \multicolumn{1}{l|}{num\_sim\_substeps}          & \multicolumn{1}{l|}{2}                                                                & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{char\_ctrls}                   & \multicolumn{1}{l|}{ct\_pd}                                            & M & \multicolumn{1}{l|}{world\_scale}                & \multicolumn{1}{l|}{4}                                                                & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{char\_ctrl\_files}             & \multicolumn{1}{l|}{data/controllers/humanoid3d\_phase\_rot\_ctrl.txt} & M & \multicolumn{1}{l|}{terrain\_file}               & \multicolumn{1}{l|}{data/terrain/plane.txt}                                           & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{kin\_ctrl}                     & \multicolumn{1}{l|}{motion}                                            & 1 & \multicolumn{1}{l|}{char\_types}                 & \multicolumn{1}{l|}{general}                                                          & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{motion\_files}                 & \multicolumn{1}{l|}{path to motion file}                               & M & \multicolumn{1}{l|}{character\_files}            & \multicolumn{1}{l|}{data/characters/humanoid3d.txt}                                   & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{sync\_char\_root\_pos}         & \multicolumn{1}{l|}{true}                                              & 1 & \multicolumn{1}{l|}{char\_init\_pos\_xs}         & \multicolumn{1}{l|}{double}                                                           & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{sync\_char\_root\_rot}         & \multicolumn{1}{l|}{false}                                             & 1 & \multicolumn{1}{l|}{char\_init\_pos\_zs}         & \multicolumn{1}{l|}{double}                                                           & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{agent\_files}                  & \multicolumn{1}{l|}{data/agents/ct\_agent\_humanoid\_ppo.txt}          & M & \multicolumn{1}{l|}{enable\_char\_soft\_contact} & \multicolumn{1}{l|}{false}                                                            & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{train\_agents}                 & \multicolumn{1}{l|}{boolean true/false}                                & M & \multicolumn{1}{l|}{fall\_contact\_bodies}       & \multicolumn{1}{l|}{0 1 2 3 4 6 7 8 9 10 12 13 14}                                    & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{model\_files}                  & \multicolumn{1}{l|}{path to model files}                               & M & \multicolumn{1}{l|}{char\_ctrls}                 & \multicolumn{1}{l|}{ct\_pd}                                                           & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{char\_ctrl\_files}           & \multicolumn{1}{l|}{data/controllers/humanoid3d\_phase\_rot\_ctrl.txt}                & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{kin\_ctrl}                   & \multicolumn{1}{l|}{motion}                                                           & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{motion\_files}               & \multicolumn{1}{l|}{path to motion file}                                              & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{sync\_char\_root\_pos}       & \multicolumn{1}{l|}{true}                                                             & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{sync\_char\_root\_rot}       & \multicolumn{1}{l|}{false}                                                            & 1 \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{agent\_files}                & \multicolumn{1}{l|}{data/agents/ct\_agent\_humanoid\_ppo.txt}                         & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{model\_files}                & \multicolumn{1}{l|}{in case you want to resume training, if not remove from arg file} & M \\ \hline
+  \multicolumn{1}{|l|}{}                 & \multicolumn{1}{l|}{}                               &   & \multicolumn{1}{l|}{}                              & \multicolumn{1}{l|}{}                                                  &   & \multicolumn{1}{l|}{output\_path}                & \multicolumn{1}{l|}{output}                                                           & 1 \\ \hline
+  \end{tabular}
+  \end{adjustbox}
+  \end{table}
+\item
+Install dependencies for DeepMimic and Python, run the make file for DeepMimicCore Dependencies are found in the readme in the github.
+
+Then you can run argument files using the commands given. The readme is also in the MultiDeepMimic base folder.
 
 \end{itemize}
-
-\textbf{Don't include your source code in the appendices}. It will be
-submitted separately.
-
-
 
 \end{appendices}
 
