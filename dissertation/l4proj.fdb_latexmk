@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex l4proj"] 1722187402.18683 "l4proj.aux" "l4proj.bbl" "l4proj" 1722188373.65502 2
-  "./l4proj.bib" 1722155508 1383 ef6f593e4ad6224a3e184f97eb19875a ""
+["bibtex l4proj"] 0 "l4proj.aux" "l4proj.bbl" "l4proj" 0 -1
+  "./l4proj.bib" 1722194420.58776 1383 ef6f593e4ad6224a3e184f97eb19875a ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/harvard/agsm.bst" 1136766823 25549 e3d0f1ab4ae55e777f7352db30e2c6f7 ""
-  "l4proj.aux" 1722188373.41542 10162 961787040bfb6be6563dfd36144db112 "pdflatex"
+  "l4proj.aux" 1722441482.3033 10162 961787040bfb6be6563dfd36144db112 "pdflatex"
   (generated)
   "l4proj.bbl"
   "l4proj.blg"
   (rewritten before read)
-["pdflatex"] 1722188372.61003 "/home/julian/Documents/Dissertation/DeepMimic/MultiDeepMimic/dissertation/l4proj.tex" "l4proj.pdf" "l4proj" 1722188373.65515 2
-  "/home/julian/Documents/Dissertation/DeepMimic/MultiDeepMimic/dissertation/l4proj.tex" 1722187400.83531 27459 3c77b043b1fdc930544f1d55706e1936 ""
+["pdflatex"] 1722441481.45474 "/home/julian/Documents/Dissertation/DeepMimic/MultiDeepMimic/dissertation/l4proj.tex" "l4proj.pdf" "l4proj" 1722441482.58233 2
+  "/home/julian/Documents/Dissertation/DeepMimic/MultiDeepMimic/dissertation/l4proj.tex" 1722441481.12228 27459 3c77b043b1fdc930544f1d55706e1936 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/fbb/fbb_4zjlsx.enc" 1593726333 2906 e61ee539f72040515b8ad56a2123a2e2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/fbb/fbb_dejuay.enc" 1593726333 3468 93e41a270f0caf09a496cd6a6afc40ac ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/fbb/fbb_ivhnor.enc" 1593726333 2908 5132b10db74281cae0e8816be7d1f21e ""
@@ -318,12 +318,12 @@
   "images/relu.pdf" 1722155508 6749 f5ecb24a7c5db2dd924b4942ecb74cff ""
   "images/synthetic.png" 1722155508 10048 52c9bfb756d53550d97cee79e3916b55 ""
   "images/synthetic_2.png" 1722155508 25404 cdc089ebd67cce744a176c3ec5ba7ad1 ""
-  "l4proj.aux" 1722188373.41542 10162 961787040bfb6be6563dfd36144db112 "pdflatex"
-  "l4proj.bbl" 1722187402.25629 0 d41d8cd98f00b204e9800998ecf8427e "bibtex l4proj"
+  "l4proj.aux" 1722441482.3033 10162 961787040bfb6be6563dfd36144db112 "pdflatex"
+  "l4proj.bbl" 1722195418.02768 0 d41d8cd98f00b204e9800998ecf8427e "bibtex l4proj"
   "l4proj.cls" 1722155508 9196 ae86a0b075169360eb0066cec72b3ee5 ""
-  "l4proj.out" 1722188373.41642 3507 563d6a12e02ecb5f71e5229c37fe4b61 "pdflatex"
-  "l4proj.tex" 1722187400.83531 27459 3c77b043b1fdc930544f1d55706e1936 ""
-  "l4proj.toc" 1722188373.41642 2373 4dda0d8ebd9d1335bf8285b77948c601 "pdflatex"
+  "l4proj.out" 1722441482.3043 3507 563d6a12e02ecb5f71e5229c37fe4b61 "pdflatex"
+  "l4proj.tex" 1722441481.12228 27459 3c77b043b1fdc930544f1d55706e1936 ""
+  "l4proj.toc" 1722441482.3043 2373 4dda0d8ebd9d1335bf8285b77948c601 "pdflatex"
   (generated)
   "l4proj.aux"
   "l4proj.log"
