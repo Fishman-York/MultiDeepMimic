@@ -1,33 +1,54 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Guidance}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Writing guidance}{1}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Who is the reader?}{1}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}References and style guides}{1}{subsection.1.2.2}%
-\contentsline {subsubsection}{Citation styles}{2}{subsubsection*.5}%
-\contentsline {subsection}{\numberline {1.2.3}Plagiarism warning}{2}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Quoting text}{2}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.1}Character Animation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}A History of Character Animation Techniques}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Importance in Digital Entertainment}{2}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Guidance}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Analysis/Requirements}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Guidance}{4}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Design}{5}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Guidance}{5}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Implementation}{6}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Guidance}{6}{section.5.1}%
-\contentsline {section}{\numberline {5.2}General guidance for technical writing}{6}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Figures}{6}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Equations}{8}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Algorithms}{8}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Tables}{8}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Code}{8}{subsection.5.2.5}%
-\contentsline {chapter}{\numberline {6}Evaluation}{11}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Guidance}{11}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Evidence}{11}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Conclusion}{13}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Guidance}{13}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Summary}{13}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Reflection}{13}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Future work}{13}{section.7.4}%
-\contentsline {chapter}{Appendices}{14}{section*.12}%
-\contentsline {chapter}{\numberline {A}Appendices}{14}{appendix.1.A}%
+\contentsline {section}{\numberline {2.1}Techniques}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Keyframe-Based}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Kinematic-Based}{3}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Relationship Descriptor-based}{4}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Physics-Based Simulation}{4}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Reinforcement Learning in Character Animation}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}DeepMimic: Example-Guided Deep Reinforcement Learning}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Similar Projects}{6}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Supertrack: Motion Tracking for Physically Simulated Characters}{6}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}CALM: Conditional Adversarial Latent Models for Directable Virtual Characters}{6}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Carpet Rolling for Character Control On Uneven Terrain}{6}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Issues}{7}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Goals}{7}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Analysis of DeepMimic}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Formatting of Joints}{8}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Lack of Implementation of Multiple Characters}{11}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}How DeepMimic Works}{11}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Argument Files}{11}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Initial Positions of Characters}{13}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Display of Mocap Files}{14}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Simulation of Motion Files}{14}{subsection.3.2.5}%
+\contentsline {chapter}{\numberline {4}Design}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Transformation of SMPL-X to DeepMimic Humanoid Format}{17}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Mapping of joints}{17}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Swapping of Axes}{18}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Rotation of Joints}{19}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Changing DeepMimic to implement Multiple Characters}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}A program to generate a argument file}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}A Map of the Files needed to Implement Multiple Characters}{22}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {5}Implementation}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conversion}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Argument Parsing}{24}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Display}{24}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Simulation}{25}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Training of Policies}{26}{subsection.5.4.1}%
+\contentsline {chapter}{\numberline {6}Evaluation}{27}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Evaluation of Work Done}{27}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Conversion}{27}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Randomisation}{27}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Argument Files}{27}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Being Able to Make Multiple Characters Interact}{28}{subsection.6.1.4}%
+\contentsline {chapter}{\numberline {7}Conclusion}{29}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Recap}{29}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Reflection}{29}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Future Work}{30}{section.7.3}%
+\contentsline {chapter}{Appendices}{31}{section*.22}%
+\contentsline {chapter}{\numberline {A}Appendices}{31}{appendix.1.A}%
+\contentsline {chapter}{Bibliography}{32}{appendix*.23}%

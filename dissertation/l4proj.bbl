@@ -1,0 +1,65 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Al-Asqhar et~al.]{Al-Asqhar, Komura \harvardand\ Choi}{2013}{AlAsqhar2013}
+Al-Asqhar, R.~A., Komura, T. \harvardand\ Choi, M.~G.  \harvardyearleft 2013\harvardyearright , Relationship descriptors for interactive motion adaptation, {\em in} `Proceedings of the 12th ACM SIGGRAPH/Eurographics Symposium on Computer Animation', SCA ’13, ACM.
+\newline\harvardurl{http://dx.doi.org/10.1145/2485895.2485905}
+
+\harvarditem{Boeing \harvardand\ Br\"{a}unl}{2007}{boeing07}
+Boeing, A. \harvardand\ Br\"{a}unl, T.  \harvardyearleft 2007\harvardyearright , Evaluation of real-time physics simulation systems, {\em in} `Proceedings of the 5th international conference on Computer graphics and interactive techniques in Australia and Southeast Asia', GRAPHITE07, ACM.
+\newline\harvardurl{http://dx.doi.org/10.1145/1321261.1321312}
+
+\harvarditem[Choutas et~al.]{Choutas, Black, Mahmood, Ghorbani, Osman, Bolkart, Tripathi, Kocabas, Keller, Taheri, Muller, Patel \harvardand\ Tesch}{n.d.}{smplpowerpoint}
+Choutas, V., Black, M., Mahmood, N., Ghorbani, N., Osman, A., Bolkart, T., Tripathi, S., Kocabas, M., Keller, M., Taheri, O., Muller, L., Patel, P. \harvardand\ Tesch, J.  \harvardyearleft n.d.\harvardyearright , `Smpl made simple faqs'.
+\newline\harvardurl{https://files.is.tue.mpg.de/black/talks/SMPL-made-simple-FAQs.pdf}
+
+\harvarditem{Dexerto}{2024}{dexerto24}
+Dexerto  \harvardyearleft 2024\harvardyearright , `Stellar blade director talks about the challenge of developing eve - dexerto --- dexerto.com', \url{https://www.dexerto.com/gaming/stellar-blade-director-talks-about-the-challenge-of-developing-eve-2621380/}.
+
+\harvarditem[Fussell et~al.]{Fussell, Bergamin \harvardand\ Holden}{2021}{Fussell2021}
+Fussell, L., Bergamin, K. \harvardand\ Holden, D.  \harvardyearleft 2021\harvardyearright , `Supertrack: motion tracking for physically simulated characters using supervised learning', {\em ACM Transactions on Graphics} {\bf 40}(6),~1–13.
+\newline\harvardurl{http://dx.doi.org/10.1145/3478513.3480527}
+
+\harvarditem[Holden et~al.]{Holden, Komura \harvardand\ Saito}{2017}{Holden2017}
+Holden, D., Komura, T. \harvardand\ Saito, J.  \harvardyearleft 2017\harvardyearright , `Phase-functioned neural networks for character control', {\em ACM Transactions on Graphics} {\bf 36}(4),~1–13.
+\newline\harvardurl{http://dx.doi.org/10.1145/3072959.3073663}
+
+\harvarditem{Larsson \harvardand\ Strombom}{2023}{guiltygear23}
+Larsson, F. \harvardand\ Strombom, G.  \harvardyearleft 2023\harvardyearright , Ready? Fight! How Guilty Gear -Strive-'s approach to fighting game animations lend themselves to character appeal., PhD thesis, Uppsala Universitet.
+\newline\harvardurl{https://uu.diva-portal.org/smash/get/diva2:1769414/FULLTEXT01.pdf}
+
+\harvarditem{Lee \harvardand\ Shin}{1999}{Lee1999}
+Lee, J. \harvardand\ Shin, S.~Y.  \harvardyearleft 1999\harvardyearright , A hierarchical approach to interactive motion editing for human-like figures, {\em in} `Proceedings of the 26th annual conference on Computer graphics and interactive techniques - SIGGRAPH ’99', SIGGRAPH ’99, ACM Press.
+\newline\harvardurl{http://dx.doi.org/10.1145/311535.311539}
+
+\harvarditem{Lee}{2023}{tina23}
+Lee, T.  \harvardyearleft 2023\harvardyearright , `Cost of cgi: Cgi scenes in marvel universe movies (2023) --- academyofanimatedart.com', \url{https://academyofanimatedart.com/breakthrough-and-expensive-cgi-scenes-in-mcu-movies/}.
+
+\harvarditem[Miller et~al.]{Miller, Holden, Al-Ashqar, Dubach, Mitchell \harvardand\ Komura}{2015}{Miller2015}
+Miller, M., Holden, D., Al-Ashqar, R., Dubach, C., Mitchell, K. \harvardand\ Komura, T.  \harvardyearleft 2015\harvardyearright , Carpet unrolling for character control on uneven terrain, {\em in} `Proceedings of the 8th ACM SIGGRAPH Conference on Motion in Games', MIG ’15, ACM.
+\newline\harvardurl{http://dx.doi.org/10.1145/2822013.2822031}
+
+\harvarditem{Paul}{1981}{Paul1981-ar}
+Paul, R.~P.  \harvardyearleft 1981\harvardyearright , {\em Robot manipulators}, Artificial Intelligence, MIT Press, London, England.
+
+\harvarditem[Pavlakos et~al.]{Pavlakos, Choutas, Ghorbani, Bolkart, Osman, Tzionas \harvardand\ Black}{2019}{smplx19}
+Pavlakos, G., Choutas, V., Ghorbani, N., Bolkart, T., Osman, A. A.~A., Tzionas, D. \harvardand\ Black, M.~J.  \harvardyearleft 2019\harvardyearright , `Expressive body capture: 3d hands, face, and body from a single image'.
+\newline\harvardurl{https://arxiv.org/abs/1904.05866}
+
+\harvarditem[Peng et~al.]{Peng, Abbeel, Levine \harvardand\ van~de Panne}{2018}{deepmimic}
+Peng, X.~B., Abbeel, P., Levine, S. \harvardand\ van~de Panne, M.  \harvardyearleft 2018\harvardyearright , `Deepmimic: Example-guided deep reinforcement learning of physics-based character skills', {\em ACM Trans. Graph.} {\bf 37}(4),~143:1--143:14.
+\newline\harvardurl{http://doi.acm.org/10.1145/3197517.3201311}
+
+\harvarditem[Tessler et~al.]{Tessler, Kasten, Guo, Mannor, Chechik \harvardand\ Peng}{2023}{tessler2023calm}
+Tessler, C., Kasten, Y., Guo, Y., Mannor, S., Chechik, G. \harvardand\ Peng, X.~B.  \harvardyearleft 2023\harvardyearright , Calm: Conditional adversarial latent models for directable virtual characters, {\em in} `ACM SIGGRAPH 2023 Conference Proceedings', SIGGRAPH '23, Association for Computing Machinery, New York, NY, USA.
+\newline\harvardurl{https://doi.org/10.1145/3588432.3591541}
+
+\harvarditem{Thomas \harvardand\ Johnston}{1995}{disneyanimation81}
+Thomas, F. \harvardand\ Johnston, O.  \harvardyearleft 1995\harvardyearright , {\em Disney Animation: The Illusion of Life}, Hyperion.
+
+\harvarditem{Wagner}{2023}{wagner23}
+Wagner, K.  \harvardyearleft 2023\harvardyearright , `Lessons from the catastrophic failure of the metaverse --- thenation.com', \url{https://www.thenation.com/article/culture/metaverse-zuckerberg-pr-hype/}.
+
+\harvarditem{Williams}{2009}{survival09}
+Williams, R.  \harvardyearleft 2009\harvardyearright , {\em Animator's Survival Kit}.
+
+\end{thebibliography}
