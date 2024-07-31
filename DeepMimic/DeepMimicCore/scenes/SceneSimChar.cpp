@@ -521,15 +521,21 @@ void cSceneSimChar::SetCharRandPlacement(const std::shared_ptr<cSimCharacter>& o
 
 void cSceneSimChar::CalcCharRandPlacement(const std::shared_ptr<cSimCharacter>& out_char, tVector& out_pos, tQuaternion& out_rot)
 {
-	tVector char_pos = out_char->GetRootPos();
+	tVector root_pos = out_char->GetRootPos();
+	int char_id = out_char->GetID();
+	root_pos[0] = mCharParams[char_id].mInitPos[0];
+	root_pos[2] = mCharParams[char_id].mInitPos[2];
 	tQuaternion char_rot = out_char->GetRootRotation();
 
 	tVector rand_pos;
 	tQuaternion rand_rot;
 	mGround->SamplePlacement(tVector::Zero(), rand_pos, rand_rot);
-	rand_pos[0] = rand() % 10;
-	out_pos = rand_pos;
-	out_pos[1] += char_pos[1];
+	rand_pos[0] = static_cast<double> (rand() % 10)/10*0.4-0.2;
+	rand_pos[2] = static_cast<double> (rand() % 10)/10*0.4-0.2;
+	out_pos = root_pos;
+	out_pos[0] += rand_pos[0];
+	out_pos[1] = rand_pos[1] + root_pos[1];
+	out_pos[2] += rand_pos[2];
 	out_rot = rand_rot * char_rot;
 }
 
