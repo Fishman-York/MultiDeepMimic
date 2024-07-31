@@ -162,18 +162,8 @@ A number of argument files are already provided in `args/` for the different ski
 `train_[something]_args.txt` files are setup for `mpi_run.py` to train a policy, and 
 `run_[something]_args.txt` files are setup for `DeepMimic.py` to run one of the pretrained policies.
 To run your own policies, take one of the `run_[something]_args.txt` files and specify
-the policy you want to run with `--model_file`. Make sure that the reference motion `--motion_file`
+the policy you want to run with `--model_files`. Make sure that the reference motion `--motion_files`
 corresponds to the motion that your policy was trained for, otherwise the policy will not run properly.
-
-Similarly, to train a policy using amp, run with the corresponding argument files:
-```
-python mpi_run.py --arg_file args/train_amp_target_humanoid3d_locomotion_args.txt --num_workers 16
-```
-
-Pretrained AMP models can be evaluated using:
-```
-python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.txt
-```
 
 ## Interface
 - the plot on the top-right shows the predictions of the value function
@@ -190,7 +180,7 @@ python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.tx
 ## Mocap Data
 Mocap clips are located in `data/motions/`. To play a clip, first modify 
 `args/play_motion_humanoid3d_args.txt` and specify the file to play with
-`--motion_file`, then run
+`--motion_files`, then run
 ```
 python DeepMimic.py --arg_file args/play_motion_humanoid3d_args.txt
 ```
@@ -225,6 +215,13 @@ positions and rotations are in world coordinates, but all other joint rotations 
 To use your own motion clip, convert it to a similar style JSON file.
 
 ## Arg Files
+A list of relevant fields to this dissertation is in the appendix, along with the convention needed to edit argument files.
+
+## Python conversion files
+Files for conversion are all in the folder labelled conversion. Edit the variables left on the top to what you need and then run main(). Do note that conversion.py is not a correct solution, made with a misconception I had with rotation matrices. What you'll likely want is rotate_deepmimic.py, which flips deepmimic motion files around the y axis.
+
+## Output readability
+Use convert_log.py in the conversion folder to make output logs from training policies readable. It shows you the last data from the last sample in the terminal using a print statement.
 
 ## Possible Issues and Solutions
 
